@@ -1,10 +1,3 @@
-/* 
- * File:   Primitive.cpp
- * Author: Aditya
- * 
- * Created on September 30, 2016, 11:28 PM
- */
-
 #include <Adorn/Renderer/Primitive.h>
 #include <GL/glew.h>
 
