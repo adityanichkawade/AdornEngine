@@ -2,6 +2,8 @@
 #define OPENGL_BUFFER_H
 
 #include <Adorn/Renderer/Buffer.h>
+#include <vector>
+#include <GL/glew.h>
 
 namespace Adorn {
 	class OpenGLBuffer : public Buffer{
@@ -12,10 +14,11 @@ namespace Adorn {
 	protected:
 		void compile();
 	private:
-		GLenum getBufferType() const;
-		GLenum getBufferUsage() const;
+		GLenum getBufferType(BufferAttribute::BufferType aBufferType) const;
+		GLenum getBufferUsage(BufferAttribute::BufferUsage aBufferUsage) const;
 
-		unsigned int _bufferId;
+		unsigned int _vao;
+		std::vector<unsigned int>  _bufferIds;
 	};
 }
 

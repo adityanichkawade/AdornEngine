@@ -1,23 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   SceneManager.cpp
- * Author: Aditya
- * 
- * Created on September 25, 2016, 4:41 PM
- */
-
 #include <Adorn/Core/SceneManager.h>
+#include <Adorn/Core/Scene.h>
 
 namespace Adorn{
     SceneManager::SceneManager() {
     }
 
     SceneManager::~SceneManager() {
+		for (size_t i = 0; i < _scene.size(); i++) {
+			delete _scene[i];
+		}
+
+		_scene.clear();
     }
+	void SceneManager::addScene(Scene * aScene) {
+		this->_scene.push_back(aScene);
+	}
+
+	void SceneManager::renderScene()
+	{
+	}
 }
 

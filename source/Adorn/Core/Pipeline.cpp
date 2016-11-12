@@ -13,43 +13,43 @@
 
 #include <cstdlib>
 
-#include <Adorn/Core/NodeAttribute.h>
+#include <Adorn/Core/Pipeline.h>
 #include <Adorn/Renderer/ShaderProgram.h>
-#include <Adorn/Renderer/Primitive.h>
+#include <Adorn/Renderer/Buffer.h>
 
 namespace Adorn{
-    NodeAttribute::NodeAttribute(): 
+    Pipeline::Pipeline(): 
     _shaderProgram(NULL),
-    _shape(NULL){
+    _buffer(NULL){
     }
 
-    NodeAttribute::~NodeAttribute() {
+    Pipeline::~Pipeline() {
         if(this->_shaderProgram != NULL){
             delete _shaderProgram;
             _shaderProgram = NULL;
         }
         
-        if(this->_shape != NULL){
-            delete _shape;
-            _shape = NULL;
+        if(this->_buffer != NULL){
+            delete _buffer;
+            _buffer = NULL;
         }
     }
 
-    void NodeAttribute::setShader(ShaderProgram* aShaderProgram) {
+    void Pipeline::setShader(ShaderProgram* aShaderProgram) {
         this->_shaderProgram = aShaderProgram;
     }
     
-    void NodeAttribute::setShape(Primitive *aShape){
-        this->_shape = aShape;
+    void Pipeline::setBuffer(Buffer *aBuffer){
+        this->_buffer = aBuffer;
     }
     
-    void NodeAttribute::render(){
+    void Pipeline::render(){
         if(this->_shaderProgram != NULL){
             this->_shaderProgram->render();
         }
         
-        if(this->_shaderProgram != NULL){
-            this->_shape->render();
+        if(this->_buffer != NULL){
+            this->_buffer->render();
         }
     }
 }

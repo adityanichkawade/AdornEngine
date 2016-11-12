@@ -11,6 +11,8 @@ namespace Adorn {
 
 		Shader *createShader();
 		Primitive *createPrimitive();
+		Buffer *createBuffer();
+		ShaderProgram *createShaderProgram();
 	};
 }
 

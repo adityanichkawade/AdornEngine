@@ -2,13 +2,13 @@
 #define PRIMITIVE_H
 
 namespace Adorn{
-    enum PrimitiveType {
-        TRIANGLE_STRIP,
-        TRIANGLE_FAN
-    };
-    
     class Primitive {
     public:
+		enum PrimitiveType {
+			TRIANGLE_STRIP,
+			TRIANGLE_FAN
+		};
+
         virtual ~Primitive();
         
         void setPrimitiveType(PrimitiveType aPrimitiveType);

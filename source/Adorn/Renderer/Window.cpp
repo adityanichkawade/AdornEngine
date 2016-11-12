@@ -1,4 +1,5 @@
 #include <Adorn/Renderer/Window.h>
+#include <Adorn/Renderer/GraphicContext.h>
 
 namespace Adorn {
 	Window::Window(LPCWSTR aTitle, unsigned int aWidth, unsigned int aHeight, HINSTANCE aHInstance): 
@@ -6,10 +7,12 @@ namespace Adorn {
 		_height(aHeight),
 		_title(aTitle),
 		_hInstance(aHInstance),
-		_hWnd(NULL){
+		_hWnd(NULL),
+		_context(NULL){
 	}
 
 	Window::~Window(){
+		delete this->_context;
 		DestroyWindow(this->_hWnd);
 	}
 
@@ -52,6 +55,10 @@ namespace Adorn {
 		this->_hWnd = CreateWindowEx(dwExStyle, this->_title, this->_title, WS_OVERLAPPEDWINDOW,
 									 CW_USEDEFAULT, 0, this->_width, this->_height, NULL, NULL, this->_hInstance, NULL);
 
+		if (this->_context) {
+			this->_context->setupContext(this->_hWnd);
+		}
+
 		return true;
 	}
 
@@ -72,6 +79,18 @@ namespace Adorn {
 			DispatchMessage(&msg);
 		}
 		return true;
+	}
+
+	void Window::setContext(GraphicContext * aContext)
+	{
+		this->_context = aContext;
+	}
+
+	void Window::run()
+	{
+		while (this->isRunning()) {
+			this->_context->render();
+		}
 	}
 
 	HWND Window::getHandle(){

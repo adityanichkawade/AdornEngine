@@ -4,6 +4,14 @@
 
 #include <iostream>
 
+void _print_programme_info_log(GLuint sp) {
+	int max_length = 2048;
+	int actual_length = 0;
+	char log[2048];
+	glGetProgramInfoLog(sp, max_length, &actual_length, log);
+	printf("program info log for GL index %i:\n%s", sp, log);
+}
+
 namespace Adorn {
 
 	OpenGLShaderProgram::OpenGLShaderProgram() {

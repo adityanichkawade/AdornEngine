@@ -69,7 +69,7 @@ namespace Adorn {
 		return true; 
 	}
 	void OpenGLContext::begin(){
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glClearColor(this->_clearColor[0], this->_clearColor[1], this->_clearColor[2], this->_clearColor[3]);
 	}
 

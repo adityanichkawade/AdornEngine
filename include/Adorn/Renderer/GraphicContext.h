@@ -1,4 +1,3 @@
-
 #ifndef GRAPHIC_CONTEXT_H
 #define GRAPHIC_CONTEXT_H
 
@@ -27,6 +26,8 @@ namespace Adorn {
 		virtual bool setupContext(HWND aHWnd) = 0;
 		virtual void begin() = 0;
 		virtual void end() = 0;
+
+		void render();
 	protected:
 		GraphicContext();
 	protected:

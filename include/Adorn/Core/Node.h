@@ -2,17 +2,17 @@
 #define NODE_H
 
 namespace Adorn{
-    class NodeAttribute;
+    class Pipeline;
 
     class Node {
     public:
         Node();
         virtual ~Node();
 
-        void setAttribute(NodeAttribute *aAttribute);
+        void setPipeline(Pipeline *aAttribute);
         virtual void render();
     private:
-        NodeAttribute *_attribute;
+        Pipeline *_attribute;
     };
 }
 

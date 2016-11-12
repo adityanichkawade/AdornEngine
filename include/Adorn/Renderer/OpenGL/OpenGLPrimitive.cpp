@@ -16,7 +16,7 @@ namespace Adorn {
 			primitiveType = GL_TRIANGLE_FAN;
 			break;
 		default:
-			primitiveType = GL_TRIANGLE_STRIP;
+			primitiveType = GL_TRIANGLES;
 			break;
 		}
 

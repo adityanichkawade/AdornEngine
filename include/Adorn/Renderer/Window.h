@@ -4,6 +4,8 @@
 #include <Windows.h>
 
 namespace Adorn {
+	class GraphicContext;
+
 	class Window {
 	public:
 		Window(LPCWSTR aTitle, unsigned int aWidth, unsigned int aHeight, HINSTANCE aHInstance);
@@ -15,8 +17,13 @@ namespace Adorn {
 		bool create();
 		void show();
 		bool isRunning();
+
+		void setContext(GraphicContext *aContext);
+
+		void run();
 		
 	private:
+		GraphicContext * _context;
 		unsigned int _width;
 		unsigned int _height;
 		HINSTANCE _hInstance;

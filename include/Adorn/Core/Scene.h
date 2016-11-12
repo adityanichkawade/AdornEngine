@@ -14,10 +14,8 @@ namespace Adorn{
 
         void addNode(Node *aNode);
         void render();
-        void setClearColor(float aClearColor[]);
     private:
         Group *_group;
-        float _clearColor[4];
     };
 }
 #endif /* SCENE_H */

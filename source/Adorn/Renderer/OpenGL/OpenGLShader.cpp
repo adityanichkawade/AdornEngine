@@ -1,6 +1,16 @@
 #include <Adorn/Renderer/OpenGL/OpenGLShader.h>
 #include <GL/glew.h>
 #include <cstdlib>
+#include <stdio.h>
+
+/* print errors in shader compilation */
+void _print_shader_info_log(GLuint shader_index) {
+	int max_length = 2048;
+	int actual_length = 0;
+	char log[2048];
+	glGetShaderInfoLog(shader_index, max_length, &actual_length, log);
+	printf("shader info log for GL index %i:\n%s\n", shader_index, log);
+}
 
 namespace Adorn {
 	OpenGLShader::OpenGLShader(){
@@ -33,8 +43,18 @@ namespace Adorn {
 	}
 
 	bool OpenGLShader::compile() {
+		int params = -1;
+
 		if (this->_shaderId != 0) {
 			glCompileShader(this->_shaderId);
+
+			/* check for compile errors */
+			glGetShaderiv(this->_shaderId, GL_COMPILE_STATUS, &params);
+			if (GL_TRUE != params) {
+				fprintf(stderr, "ERROR: GL shader index %i did not compile\n", this->_shaderId);
+				_print_shader_info_log(this->_shaderId);
+				return 1; /* or exit or something */
+			}
 			return true;
 		}
 		return false;

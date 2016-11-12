@@ -39,6 +39,8 @@ namespace Adorn{
         for(size_t i = 0; i < this->_nodes.size(); i++){
             delete this->_nodes[i];
         }
+
+		this->_nodes.clear();
     }
 }
 

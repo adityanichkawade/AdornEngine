@@ -14,7 +14,7 @@
 #include <cstdlib>
 
 #include <Adorn/Core/Node.h>
-#include <Adorn/Core/NodeAttribute.h>
+#include <Adorn/Core/Pipeline.h>
 
 namespace Adorn{
     Node::Node():
@@ -28,7 +28,7 @@ namespace Adorn{
         }
     }
     
-    void Node::setAttribute(NodeAttribute *aAttribute){
+    void Node::setPipeline(Pipeline *aAttribute){
         _attribute = aAttribute;
     }
             

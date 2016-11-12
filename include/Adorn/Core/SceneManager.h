@@ -10,6 +10,8 @@ namespace Adorn{
     public:
         SceneManager();
         virtual ~SceneManager();
+
+		void addScene(Scene* aScene);
         
         void renderScene();
     private:
